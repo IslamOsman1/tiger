@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cairo', system-ui, sans-serif;
+  background: #050505;
+  color: #fff;
+}
+
+::selection {
+  background: #f59f00;
+  color: #050505;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.section-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.container-main {
+  @apply mx-auto max-w-7xl;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-tiger-400 px-4 py-2.5 text-sm font-bold text-black shadow-glow transition hover:-translate-y-1 hover:bg-tiger-300 sm:rounded-2xl sm:px-6 sm:py-3 sm:text-base;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-white/15 sm:rounded-2xl sm:px-6 sm:py-3 sm:text-base;
+}
+
+.input {
+  @apply w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-tiger-400 focus:ring-2 focus:ring-tiger-400/20;
+}
+
+.card-hover {
+  @apply transition duration-300 hover:-translate-y-2 hover:shadow-glow;
+}
+
+.ar-pattern {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(245, 159, 0, 0.16), transparent 28%),
+    radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 55% 82%, rgba(245, 159, 0, 0.12), transparent 30%);
+}
+
+.hero-glow-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.logo-glow-ring {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 241, 210, 0.08), transparent 42%),
+    linear-gradient(180deg, #241b14, #120d09);
+}
+
+.logo-glow-ring > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2px;
+  mix-blend-mode: normal;
+  filter: contrast(1.14) saturate(1.08) brightness(1.08);
+}
+
+.logo-glow-ring::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    conic-gradient(
+      from 180deg,
+      transparent 0deg,
+      transparent 265deg,
+      rgba(245, 159, 0, 0.18) 290deg,
+      rgba(255, 244, 214, 0.95) 320deg,
+      rgba(245, 159, 0, 0.75) 342deg,
+      transparent 360deg
+    );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: heroBorderRotate 14s linear infinite;
+}
+
+.logo-glow-ring::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle, rgba(245, 159, 0, 0.22), transparent 68%);
+  filter: blur(10px);
+  opacity: 0.72;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-glow-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background:
+    conic-gradient(
+      from 90deg,
+      transparent 0deg,
+      transparent 250deg,
+      rgba(255, 231, 179, 0.06) 270deg,
+      rgba(245, 159, 0, 0.32) 295deg,
+      rgba(255, 244, 214, 0.98) 318deg,
+      rgba(245, 159, 0, 0.78) 338deg,
+      rgba(255, 231, 179, 0.12) 352deg,
+      transparent 360deg
+    );
+  animation: heroBorderRotate 16s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-clip: content-box, border-box;
+  -webkit-mask-composite: xor;
+  padding: 1.5px;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.hero-glow-frame::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: inherit;
+  background:
+    conic-gradient(
+      from 90deg,
+      transparent 0deg,
+      transparent 255deg,
+      rgba(245, 159, 0, 0.02) 278deg,
+      rgba(245, 159, 0, 0.14) 300deg,
+      rgba(255, 239, 199, 0.32) 320deg,
+      rgba(245, 159, 0, 0.2) 340deg,
+      transparent 360deg
+    );
+  filter: blur(18px);
+  opacity: 0.82;
+  z-index: -1;
+  pointer-events: none;
+  animation: heroBorderRotate 16s linear infinite, heroGlowPulse 6.5s ease-in-out infinite;
+}
+
+.hero-enter {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  animation: heroEnter 850ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero-float {
+  animation: heroFloat 5.2s ease-in-out infinite;
+}
+
+.hero-stagger-1 {
+  animation-delay: 90ms;
+}
+
+.hero-stagger-2 {
+  animation-delay: 180ms;
+}
+
+.hero-stagger-3 {
+  animation-delay: 270ms;
+}
+
+.hero-stagger-4 {
+  animation-delay: 360ms;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(0.995);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes heroBorderRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-float,
+  .hero-glow-frame::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
