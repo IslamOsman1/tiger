@@ -9,6 +9,7 @@ import authRoutes from './src/routes/authRoutes.js';
 import galleryRoutes from './src/routes/galleryRoutes.js';
 import serviceRoutes from './src/routes/serviceRoutes.js';
 import settingsRoutes from './src/routes/settingsRoutes.js';
+import publicRoutes from './src/routes/publicRoutes.js';
 import { notFound, errorHandler } from './src/middleware/errorHandler.js';
 
 dotenv.config();
@@ -37,6 +38,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/public', publicRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
